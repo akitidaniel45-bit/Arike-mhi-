@@ -1,3 +1,24 @@
+let loading=0;
+
+let timer=setInterval(function(){
+
+loading++;
+
+document.getElementById("bar").style.width=loading+"%";
+
+document.getElementById("percent").innerHTML=loading+"%";
+
+if(loading>=100){
+
+clearInterval(timer);
+
+document.getElementById("loader").style.display="none";
+
+document.getElementById("main").style.display="block";
+
+}
+
+},25);
 const message=`Hi mama,
 
 Arike mhi If you're reading this, it means you scanned my weird QR code😂 and now I can't hide how I feel anymore.
