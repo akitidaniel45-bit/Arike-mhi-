@@ -1,70 +1,187 @@
-let loading=0;
+// ====================================
+// Daniel ❤️ Arike
+// Premium Proposal Website
+// Part 1
+// ====================================
 
-let timer=setInterval(function(){
+// Elements
+const loader = document.getElementById("loader");
+const main = document.getElementById("main");
+const bar = document.getElementById("bar");
+const percent = document.getElementById("percent");
+const text = document.getElementById("text");
+const hearts = document.getElementById("hearts");
 
-loading++;
+let progress = 0;
 
-document.getElementById("bar").style.width=loading+"%";
+// Loading Screen
+const loading = setInterval(() => {
 
-document.getElementById("percent").innerHTML=loading+"%";
+    progress++;
 
-if(loading>=100){
+    bar.style.width = progress + "%";
+    percent.innerHTML = progress + "%";
 
-clearInterval(timer);
+    if (progress >= 100) {
 
-document.getElementById("loader").style.display="none";
+        clearInterval(loading);
 
-document.getElementById("main").style.display="block";
+        setTimeout(() => {
+
+            loader.style.display = "none";
+            main.style.display = "block";
+
+            typeMessage();
+
+            createHeart();
+            setInterval(createHeart, 700);
+
+        }, 500);
+
+    }
+
+}, 25);
+
+// Proposal Message
+
+const message = `Hi mama ❤️
+
+Arike mhi,
+
+If you're reading this, it means you scanned my weird QR code 😂 and now I can't hide how I feel anymore.
+
+These past few days have been some of the happiest I've had in a long time.
+
+Every conversation with you leaves me smiling and I find myself looking forward to every message.
+
+You've become someone I genuinely care about.
+
+I know we've only known each other for a short time, but I want to be honest with how I feel.
+
+Arike...
+
+Will you be my woman?
+
+The one whose voice I want to hear every morning.
+
+The one I'd gladly go the extra mile for.
+
+The woman behind my smile.
+
+No matter what your answer is...
+
+Thank you for making these days so special.
+
+I truly hope you'll say yes. ❤️
+
+Love,
+Daniel ❤️`;
+
+let index = 0;
+
+function typeMessage() {
+
+    if (index < message.length) {
+
+        text.innerHTML += message.charAt(index);
+
+        index++;
+
+        setTimeout(typeMessage, 28);
+
+    }
 
 }
 
-},25);
-const message=`Hi mama,
+// Floating Hearts
 
-Arike mhi If you're reading this, it means you scanned my weird QR code😂 and now I can't hide how I feel anymore.
+function createHeart() {
 
-These past few days have been some of the happiest I've had in a long time. Every conversation with you leaves me smiling, and I find myself looking forward to every message from you. You've become someone I genuinely care about.
+    const heart = document.createElement("div");
 
-I know we've only known each other for a short time, I just want to be honest with how I feel.
+    heart.classList.add("heart");
 
-Arike will you be my woman, the one whose voice I wanna listen to in the morning and whose face I wanna see throughout my day, the person I can always call or text if I'm happy or sad, the one I'd go extra miles for, the woman behind my smile.
+    heart.innerHTML = ["❤️","💕","💖","💗","💘"][Math.floor(Math.random()*5)];
 
-No matter what your answer is, thank you for making these days so special.
+    heart.style.left = Math.random() * 100 + "vw";
 
-But I really hope you'll say yes, because I'd love to see where this journey takes us🥹❤️
+    heart.style.animationDuration = (5 + Math.random() * 4) + "s";
 
-Love you ❤️`;
+    hearts.appendChild(heart);
 
-let i=0;
+    setTimeout(() => {
 
-function typing(){
+        heart.remove();
 
-if(i<message.length){
-
-document.getElementById("text").innerHTML+=message.charAt(i);
-
-i++;
-
-setTimeout(typing,30);
+    }, 9000);
 
 }
 
-}
+// ====================================
+// Part 2
+// Buttons + Confetti
+// ====================================
 
-typing();
+const yesBtn = document.getElementById("yesBtn");
+const maybeBtn = document.getElementById("maybeBtn");
+const reply = document.getElementById("reply");
 
-function yes(){
+// YES button
+yesBtn.addEventListener("click", () => {
 
-document.getElementById("reply").innerHTML=
+    // Confetti
+    if (typeof confetti === "function") {
+        confetti({
+            particleCount: 250,
+            spread: 180,
+            origin: { y: 0.6 }
+        });
+    }
 
-"<h2>🥹❤️ You just made me the happiest man alive.</h2>";
+    reply.innerHTML = `
+        <h2>🥹❤️ She said YES!!</h2>
+        <p>
+        Thank you for giving us a chance.<br><br>
+        I promise to keep choosing you,
+        respecting you,
+        making you smile,
+        and creating beautiful memories together.
+        ❤️
+        </p>
+    `;
 
-}
+    yesBtn.disabled = true;
+    maybeBtn.disabled = true;
 
-function maybe(){
+});
 
-document.getElementById("reply").innerHTML=
+// MAYBE button
+maybeBtn.addEventListener("click", () => {
 
-"<h2>😊 That's okay. I'll keep putting a smile on your face while we continue getting to know each other. ❤️</h2>";
+    reply.innerHTML = `
+        <h2>😊 That's Okay ❤️</h2>
+        <p>
+        I don't want to rush something beautiful.<br><br>
+        Let's keep laughing,
+        keep talking,
+        keep learning about each other,
+        and see where this journey takes us.
+        ❤️
+        </p>
+    `;
 
-}
+});
+
+// Small sparkle effect
+setInterval(() => {
+
+    document.querySelectorAll(".glass").forEach(card => {
+
+        card.style.boxShadow =
+            "0 10px " +
+            (35 + Math.random() * 20) +
+            "px rgba(255,192,203,.35)";
+
+    });
+
+}, 1800);
