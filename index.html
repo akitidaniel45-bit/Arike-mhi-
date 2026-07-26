@@ -1,6 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>❤️ A Message For Arike ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- INTRO SCREEN -->
+
+<div id="intro">
+
+<div class="intro-box">
+
+<h2>Hi Arike ❤️</h2>
+
+<p>
+
+Someone spent time creating something special just for you.
+
+</p>
+
+<button id="beginBtn">
+
+Tap To Begin ✨
+
+</button>
+
+</div>
+
+</div>
+
+<!-- LOADING SCREEN -->
+
 <div id="loader">
 
-<h1>❤️ Decrypting Daniel's Heart ❤️</h1>
+<h1>
+
+Decrypting Daniel's Heart ❤️
+
+</h1>
 
 <div class="progress">
 
@@ -12,63 +68,166 @@
 
 </div>
 
-<div id="main" style="display:none;">
-<!DOCTYPE html>
-<html>
+<!-- FLOATING HEARTS -->
 
-<head>
+<div id="hearts"></div>
 
-<meta charset="UTF-8">
+<!-- MAIN PAGE -->
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>❤️ Daniel shared something with you</title>
-
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
+<div id="main">
 
 <div class="overlay"></div>
 
 <div class="glass">
 
-<h3>Hi Mama ❤️</h3>
+<h3>
 
-<h1>Arike</h1>
+Hi Mama ❤️
+
+</h3>
+
+<h1>
+
+Arike
+
+</h1>
 
 <p id="text"></p>
 
 <div class="buttons">
 
-<button onclick="yes()">YES ❤️</button>
+<button id="yesBtn">
 
-<button onclick="maybe()">MAYBE 😊</button>
+YES ❤️
+
+</button>
+
+<button id="maybeBtn">
+
+MAYBE 😊
+
+</button>
 
 </div>
 
 <div id="reply"></div>
 
 </div>
-confetti({
 
-particleCount:250,
-
-spread:180,
-
-origin:{y:.6}
-
-});
-<script src="script.js"></script>
 </div>
 
-<canvas id="confetti"></canvas>
+<!-- YES SCREEN -->
+
+<div id="yesScreen" class="hidden">
+
+<div class="resultCard">
+
+<h1>🥹❤️</h1>
+
+<h2>She Said YES!!</h2>
+
+<p>
+
+Thank you for giving us a chance.
+
+I promise to keep choosing you,
+
+respecting you,
+
+and doing my best to make you smile every day.
+
+</p>
+
+<div id="loveTimer">
+
+<h3>
+
+Officially Together For
+
+</h3>
+
+<p id="timer">
+
+00 Days
+
+00 Hours
+
+00 Minutes
+
+00 Seconds
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MAYBE SCREEN -->
+
+<div id="maybeScreen" class="hidden">
+
+<div class="resultCard">
+
+<h1>😊</h1>
+
+<h2>That's Okay ❤️</h2>
+
+<p>
+
+I don't want to rush something beautiful.
+
+Let's keep learning about each other,
+
+keep laughing,
+
+keep smiling,
+
+and see where life takes us.
+
+I'll still be here.
+
+❤️
+
+</p>
+
+</div>
+
+</div>
+
+<!-- MUSIC -->
+
+<button id="musicBtn">
+
+🎵
+
+</button>
 
 <audio id="music" loop>
+
 <source src="romantic.mp3" type="audio/mpeg">
+
 </audio>
+
+<!-- Confetti Canvas -->
+
+<!-- Footer -->
+
+<div class="footer">
+
+Made with ❤️ by Daniel
+
+</div>
+
+<!-- Scripts -->
+
+<canvas id="confettiCanvas"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<script src="script.js"></script>
+
 </body>
 
 </html>
